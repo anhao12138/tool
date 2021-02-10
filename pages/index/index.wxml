@@ -3,11 +3,33 @@
   <image src="/static/tip_ios.svg"></image>
 </view>
 	<!-- 图片轮播图 -->
-<swiper class="card-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
+<swiper class="card-swiper {{DotStyle?'square-dot':'round-dot'}}" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" indicator-color="#8799a3" indicator-active-color="#0081ff">
+<!-- 遍历轮播图列表 -->
   <swiper-item wx:for="{{swiperList}}" wx:key class="{{cardCur==index?'cur':''}}">
     <view class="swiper-item">
-      <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+      <image src="{{item.url}}" bindtap="ev_sweiper" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
       <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
     </view>
   </swiper-item>
 </swiper>
+
+<!-- 分类列表 -->
+<view class="cu-bar bg-white solid-bottom">
+
+				<grid-item bindclickh="toPath('more')" class="text-center">
+					<image style="width: 45%;" mode="widthFix" src="../../static/3.png"></image>
+					<view class="grid-text">超清壁纸</view>
+				</grid-item>
+				<grid-item bindclick="toPath('classify')" class="text-center">
+					<image style="width: 45%;" mode="widthFix" src="../../static/2.png"></image>
+					<view class="grid-text">壁纸合集</view>
+				</grid-item>
+				<grid-item bindclick="toPath('more')" class="text-center">
+					<image style="width: 45%;" mode="widthFix" src="../../static/top.png"></image>
+					<view class="grid-text">排行榜</view>
+				</grid-item>
+		</view>
+		<!-- 今日精选 -->
+		<view class="top10">
+			<imgContainer title='今日精选' type='iphone' btnText='往日' wx:for='{{imgList}}' wx:key class="{{cardCur==index?'cur':''}}"/>
+		</view>

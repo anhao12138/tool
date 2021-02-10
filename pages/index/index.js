@@ -7,7 +7,6 @@ Page({
 	data:{
 		// 小程序的提示添加动画，默认为：false，显示
 		isWebChatTipsHidden:false,
-
 		// 吸顶效果
 		cat_is_fixed:false,
 		/**
@@ -17,23 +16,25 @@ Page({
 		autoplay: true,
 		// 间隔时间
 		interval:5000,
-		duration:1000,  //单位都是毫秒
+    duration:1000,  //单位都是毫秒
+    current:0,
     swiperList: [{
       id: 0,
       type: 'image',
-      url: 'https://api.r10086.com/%E5%9B%BE%E5%8C%85/%E5%B0%91%E5%A5%B3%E5%86%99%E7%9C%9F4/005BYqpggy1fwrcmx480aj31hc0u0tnk.jpg'
+      url: 'https://api.ixiaowai.cn/api/api.php'
     }, {
       id: 1,
         type: 'image',
-        url: 'https://api.r10086.com/%E5%9B%BE%E5%8C%85/%E5%B0%91%E5%A5%B3%E5%86%99%E7%9C%9F6/9bd9b167gy1fwri23xjhzj21hc0u01kx.jpg',
+        url: 'https://api.btstu.cn/sjbz/api.php',
     }, {
       id: 2,
       type: 'image',
-      url: 'https://api.r10086.com/%E5%9B%BE%E5%8C%85/%E5%B0%91%E5%A5%B3%E5%86%99%E7%9C%9F6/005BYqpggy1fwres8oz4tj31hc0xc1kx.jpg'
+      url: 'https://api.ixiaowai.cn/gqapi/gqapi.php'
     },]
 
 
-	},
+  },
+
 
 
 	onPageScroll: function (e) {
@@ -55,11 +56,11 @@ Page({
 	/**
    * 轮播图点击事件
    */
-  ev_banner: function (e) {
+  en_sweiper: function (e) {
     //获取当前点击组件的自定义数据：列表索引
     let index = e.currentTarget.dataset.index;
     //获取当前点击的banner信息
-    let item = this.data.banner_list[index];
+    let item = this.data.swiperList[index];
     //如果banner类型为：仅展示，则跳出此函数
     if (!item.type){
       return;
